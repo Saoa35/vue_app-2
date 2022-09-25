@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Изучаем Vue.js</title>
+<meta charset="utf-8" />
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script type="text/javascript">
+         var app = new Vue({
+        el: '#app',
+        data: {
+            visible: true
+        }
+    });
+    </script>
+</head>
+<body>
+    <div id="app">
+        <p v-if="visible">Первый параграф</p>
+        <p>Второй параграф</p>
+        <button v-on:click="visible=!visible">{{visible?'Скрыть':'Показать'}}</button>
+    </div>
+</body>
+
+</html>
