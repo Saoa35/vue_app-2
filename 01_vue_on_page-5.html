@@ -18,6 +18,16 @@
                             <p>Возраст: {{user.age}}</p></li>
     </ul>
 </div>
+
+<div id="app-3">
+    <p><input type="text" v-model="company" /></p>
+    <ul>
+      <li v-for="phone in filteredList">
+        <p>{{ phone.title }} - {{ phone.company }}</p>
+    </li>
+    </ul>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script>
 
@@ -36,6 +46,28 @@
                     {name:'Bob', age:31}, 
                     {name: 'Sam', age:28}
             ]
+        }
+    });
+
+    var app3 = new Vue({
+        el: '#app-3',
+        data: {
+            company: '',
+            phones: [
+                {title:'iPhone 7', company:'Apple'}, 
+                {title:'iPhone 6S', company:'Apple'},
+                {title:'Galaxy S8', company:'Samsung'},
+                {title:'Galaxy S7 Edge', company:'Samsung'},
+                {title:'Nokia N8', company:'HMD Global'}]
+        },
+        computed:{
+            filteredList: function(){
+                var comp = this.company;
+                return this.phones.filter(function (elem) {              
+                    if(comp==='') return true;
+                    else return elem.company.indexOf(comp) > -1;
+                })
+            }
         }
     });
 
